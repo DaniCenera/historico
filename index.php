@@ -49,8 +49,8 @@ if (mysqli_num_rows($resultado) > 0) {
     echo '<ul class="galeria">';
     while($row = mysqli_fetch_assoc($resultado)) {
       echo "<li>";
-      echo "<p>{$row["titulo"]}</p>";
       echo "<img src='img/{$row["imagen"]}' alt='{$row["titulo"]}'>";
+      echo "<h2>{$row["titulo"]}</h2>";
       echo "<p>{$row["ano"]}</p>";
       echo "<p>{$row["duracion"]}</p>";
       echo "<p>{$row["directores"]}</p>";
