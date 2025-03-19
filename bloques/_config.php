@@ -52,4 +52,40 @@ function navMenu($array)
     echo $menu;
 }
 
+
+
+// DATA BASE - BASE DE DATOS --------------------------------
+
+const HOST = 'localhost';
+const USER = 'root';
+const PASS = 'root';
+const DBNA = 'festival_cine';
+
+// Example (MySQLi Procedural) -> https://www.w3schools.com/php/php_mysql_select.asp
+
+
+//  $sql = "SELECT id, firstname, lastname FROM MyGuests";  almacenamos la consulta SQL en una variable
+//  consulta($sql) llamamos a la función pasándole la consulta anterior
+// Por defecto la consulta no nos devuelve ningún valor
+// $consulta = consulta($sql, 1) // si queremos que nos devuelva un valor almacenamos el valor en una variable y le pasamos el segundo parametro true o 1
+
+function consulta($sql, $devolver=false){
+    // Crear conexión
+    $conn = mysqli_connect(HOST, USER, PASS, DBNA);
+    // Verificar conexión
+    if (!$conn){
+    die("Conexión fallida: " . mysqli_connect_error());
+    }
+
+    if($devolver){
+        return mysqli_query($conn, $sql);
+    }
+    else{
+        mysqli_query($conn, $sql);
+    }
+
+    //cerrar conexión
+    mysqli_close($conn);
+}
+
 ?>
