@@ -49,12 +49,16 @@ if (mysqli_num_rows($resultado) > 0) {
     echo '<ul class="galeria">';
     while($row = mysqli_fetch_assoc($resultado)) {
       echo "<li>";
+      echo "<a href='ficha.php?id={$row["id"]}'>";
       echo "<img src='img/{$row["imagen"]}' alt='{$row["titulo"]}'>";
       echo "<h2>{$row["titulo"]}</h2>";
-      echo "<p>{$row["ano"]}</p>";
-      echo "<p>{$row["duracion"]}</p>";
-      echo "<p>{$row["directores"]}</p>";
-      echo "<a href='ficha.php?id={$row["id"]}'>Ver ficha</a>";
+      echo "<p><strong>Dirección:</strong> {$row["directores"]}</p>";
+      echo "<p><strong>Duración:</strong>  {$row["duracion"]} min</p>";
+      
+      $anoPeli= date('Y',strtotime($row["ano"])); //Convierte la fecha en un año y lo guarda en la variable que se usa abajo
+      echo "<p><strong>Año:</strong>  {$anoPeli}</p>";
+      
+      echo "</a>";
 
       echo "</li>";
     }

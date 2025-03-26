@@ -44,18 +44,20 @@ $resultado=consulta($sql,1);
 if (mysqli_num_rows($resultado) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($resultado)) {
-      echo "<h1>{$row["titulo"]}</h1>";
-      echo "<img src='img/{$row["imagen"]}' alt='{$row["titulo"]}'>";
-      echo "<p>{$row["sinopsis"]}</p>";
-      echo "<p>{$row["ano"]}</p>";
-      echo "<p>{$row["duracion"]}</p>";
-      echo "<a href='{$row["trailer"]}' target='_blank'>Ver tailer</a>";
-      echo "<p>{$row["directores"]}</p>";
-      echo "<p>{$row["paises"]}</p>";
-      echo "<p>{$row["ediciones"]}</p>";
-      echo "<p>{$row["galardones"]}</p>";
-      echo "<p>{$row["secciones"]}</p>";
-
+      echo "
+      <h1>{$row["titulo"]}</h1>
+      <img src='img/{$row["imagen"]}' alt='{$row["titulo"]}'>
+      <p>Sinopsis: {$row["sinopsis"]}</p>
+      <p>Año: {$row["ano"]}</p>
+      <p>Duración: {$row["duracion"]}</p>
+      <a href='https://youtube.com/watch?v={$row["trailer"]}' target='_blank'>Ver tailer</a>
+      <iframe width='560' height='315' src='https://www.youtube.com/embed/{$row["trailer"]}' title='YouTube video player' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share' referrerpolicy='strict-origin-when-cross-origin' allowfullscreen></iframe>
+      <p>Dirección: {$row["directores"]}</p>
+      <p>País/paises: {$row["paises"]}</p>
+      <p>Edición FICX: {$row["ediciones"]}</p>
+      <p>Palmarés: {$row["galardones"]}</p>
+      <p>Sección FICX: {$row["secciones"]}</p>
+      ";
     }
   } 
   else {
